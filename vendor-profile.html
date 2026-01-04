@@ -1,30 +1,53 @@
-<h1>Vendor Profile</h1>
-<table border="1" cellpadding="8">
-  <tr><th>Vendor Name</th><td id="vendorName"></td></tr>
-  <tr><th>Shop Name</th><td id="shopName"></td></tr>
-  <tr><th>Location</th><td id="location"></td></tr>
-  <tr><th>Shop No.</th><td id="shopNo"></td></tr>
-  <tr><th>Credit Period</th><td id="creditPeriod"></td></tr>
-  <tr><th>Products Uploaded</th><td id="productCount"></td></tr>
-  <tr><th>Monthly Performance</th><td id="performance"></td></tr>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vendor Dashboard</title>
+  <style>
+    body{font-family:Arial;background:#f4f4f4;padding:20px}
+    .box{background:#fff;padding:20px;border-radius:8px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+    label{font-weight:bold}
+    input,textarea,select{width:100%;padding:8px;margin-top:5px}
+    table{width:100%;border-collapse:collapse;margin-top:15px}
+    th,td{border:1px solid #ccc;padding:8px;text-align:center}
+    button{margin-top:20px;padding:10px;background:#000;color:#fff;border:none}
+  </style>
+</head>
+<body>
+<h2>Vendor Profile Dashboard</h2>
+<div class="box">
+  <div class="grid">
+    <div><label>Vendor Name</label><input type="text"></div>
+    <div><label>Shop Name</label><input type="text"></div>
+    <div><label>Destination / Location</label><input type="text"></div>
+    <div><label>Shop No (Mall)</label><input type="text"></div>
+    <div><label>Credit Period (Days)</label><input type="number"></div>
+    <div><label>Upload Shop Image</label><input type="file"></div>
+  </div>
 
-<h2>Daily Charges</h2>
-<table border="1" cellpadding="8">
-  <tr>
-    <th>Date</th>
-    <th>Charge (₹)</th>
-  </tr>
-  <tr>
-    <td>01 Jan</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>02 Jan</td>
-    <td>50</td>
-  </tr>
-</table>
+  <label>Products Uploaded</label>
+  <textarea rows="3"></textarea>
 
-<h3>Shop Image</h3>
-<input type="file">
+  <label>Monthly Performance</label>
+  <select>
+    <option>Excellent</option>
+    <option>Good</option>
+    <option>Average</option>
+    <option>Poor</option>
+  </select>
 
+  <h3>Per Day Charge Paid by Customer</h3>
+  <table>
+    <tr><th>Date</th><th>Product</th><th>Charge (₹)</th></tr>
+    <tr>
+      <td><input type="date"></td>
+      <td><input type="text"></td>
+      <td><input type="number"></td>
+    </tr>
+  </table>
+
+  <button>Save Vendor Details</button>
+</div>
+</body>
+</html>
