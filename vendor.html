@@ -15,83 +15,41 @@
   </style>
 </head>
 <body>
-<h2>vendor profile dashboard</h2>
+<h2>Vendor Profile Dashboard</h2>
 <div class="box">
   <div class="grid">
-    <div><label>vendor name</label><input type="text"></div>
-    <div><label>shop name</label><input type="text"></div>
-    <div><label>destination / location</label><input type="text"></div>
-    <div><label>shop no (mall)</label><input type="text"></div>
-    <div><label>credit period (days)</label><input type="number"></div>
-    <div><label>upload shop image</label><input type="file"></div>
+    <div><label>Vendor Name</label><input type="text"></div>
+    <div><label>Shop Name</label><input type="text"></div>
+    <div><label>Destination / Location</label><input type="text"></div>
+    <div><label>Shop No (Mall)</label><input type="text"></div>
+    <div><label>Credit Period (Days)</label><input type="number"></div>
+    <div><label>Upload Shop Image</label><input type="file"></div>
   </div>
 
-  <label>products uploaded</label>
+  <label>Products Uploaded</label>
   <textarea rows="3"></textarea>
 
-  <label>monthly performance</label>
+  <label>Monthly Performance</label>
   <select>
-    <option>excellent</option>
-    <option>good</option>
-    <option>average</option>
-    <option>poor</option>
+    <option>Excellent</option>
+    <option>Good</option>
+    <option>Average</option>
+    <option>Poor</option>
   </select>
 
-  <h3>per day charge paid by customer</h3>
+  <h3>Per Day Charge Paid by Customer</h3>
   <table>
-    <tr><th>date</th><th>product</th><th>charge (₹)</th></tr>
+    <tr><th>Date</th><th>Product</th><th>Charge (₹)</th></tr>
     <tr>
       <td><input type="date"></td>
       <td><input type="text"></td>
       <td><input type="number"></td>
     </tr>
   </table>
+
 <button id="saveBtn" enabled>Save Vendor Details</button>
-<input type="text" id="vendorName">
-<input type="text" id="shopName">
-<input type="text" id="location">
-<input type="text" id="shopNo">
-<input type="number" id="creditPeriod">
-<textarea id="products"></textarea>
 
-<select id="performance">
-  <option value="">Select</option>
-  <option>Excellent</option>
-  <option>Good</option>
-  <option>Average</option>
-</select>
-
-  <script>
-  const saveBtn = document.getElementById("saveBtn");
-
-  const inputs = document.querySelectorAll(
-    "#vendorName, #shopName, #location, #shopNo, #creditPeriod, #products, #performance"
-  );
-
-  inputs.forEach(input => {
-    input.addEventListener("input", () => {
-      saveBtn.disabled = false;
-      saveBtn.style.backgroundColor = "green";
-      saveBtn.style.cursor = "pointer";
-    });
-  });
-
-  saveBtn.addEventListener("click", () => {
-    const vendorData = {
-      vendorName: vendorName.value,
-      shopName: shopName.value,
-      location: location.value,
-      shopNo: shopNo.value,
-      creditPeriod: creditPeriod.value,
-      products: products.value,
-      performance: performance.value
-    };
-
-    localStorage.setItem("vendorData", JSON.stringify(vendorData));
-    alert("Vendor details saved successfully!");
-    window.location.href = "vendor-profile.html";
-  });
-</script>
-
+</div>
 </body>
 </html>
+
