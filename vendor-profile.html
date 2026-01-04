@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vendor Profile</title>
+  <title>vendor profile</title>
   <style>
     body { font-family: Arial; background:#f4f4f4; padding:20px }
     .card { background:#fff; padding:20px; border-radius:8px; max-width:700px; margin:auto }
@@ -15,24 +15,24 @@
 <body>
 
 <div class="card">
-  <h2>Vendor Profile</h2>
-  <p><strong>Vendor Name:</strong> <span id="vendorName"></span></p>
-  <p><strong>Shop Name:</strong> <span id="shopName"></span></p>
-  <p><strong>Location:</strong> <span id="location"></span></p>
-  <p><strong>Shop No:</strong> <span id="shopNo"></span></p>
-  <p><strong>Credit Period:</strong> <span id="creditPeriod"></span> days</p>
-  <p><strong>Products:</strong></p>
+  <h2>vendor profile</h2>
+  <p><strong>vendor name:</strong> <span id="vendorName"></span></p>
+  <p><strong>shop name:</strong> <span id="shopName"></span></p>
+  <p><strong>location:</strong> <span id="location"></span></p>
+  <p><strong>shop No:</strong> <span id="shopNo"></span></p>
+  <p><strong>credit Period:</strong> <span id="creditPeriod"></span> days</p>
+  <p><strong>products:</strong></p>
   <pre id="products"></pre>
-  <p><strong>Monthly Performance:</strong> <span id="performance"></span></p>
+  <p><strong>monthly performance:</strong> <span id="performance"></span></p>
 
-  <button onclick="window.location.href='vendor.html'">Edit Profile</button>
+  <button onclick="window.location.href='vendor.html'">edit profile</button>
 </div>
 
 <script>
-  const data = JSON.parse(localStorage.getItem("vendorProfile"));
+  const data = JSON.parse(localStorage.getItem("vendorprofile"));
 
   if (!data) {
-    alert("No vendor profile found!");
+    alert("no vendor profile found!");
     window.location.href = "vendor.html";
   }
 
