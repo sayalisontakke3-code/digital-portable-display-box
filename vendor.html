@@ -47,9 +47,32 @@
     </tr>
   </table>
 
-<button id="saveBtn" enabled>Save Vendor Details</button>
+  <button id="saveBtn">Save Vendor Details</button>
 
-</div>
+<script>
+  document.getElementById("saveBtn").addEventListener("click", function () {
+
+    const vendorData = {
+      vendorName: document.getElementById("vendorName").value,
+      shopName: document.getElementById("shopName").value,
+      location: document.getElementById("location").value,
+      shopNo: document.getElementById("shopNo").value,
+      creditPeriod: document.getElementById("creditPeriod").value,
+      products: document.getElementById("products").value,
+      performance: document.getElementById("performance").value
+    };
+
+    localStorage.setItem("vendorData", JSON.stringify(vendorData));
+
+    alert("Vendor details saved successfully!");
+    window.location.href = "vendor-profile.html";
+  });
+</script>
+
+</body>
+</html>
+
+
 </body>
 </html>
 
