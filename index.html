@@ -39,5 +39,36 @@
   <a href="vendor.html">Vendor Dashboard</a>
   <a href="display.html">View Display Screen</a>
 
+  <h2>Saved Products</h2>
+<div id="productList" style="display:flex; gap:20px; flex-wrap:wrap;"></div>
+
+  <script>
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+  const productList = document.getElementById("productList");
+
+  if (products.length === 0) {
+    productList.innerHTML = "<p>No products added yet.</p>";
+  }
+
+  products.forEach(product => {
+    const card = document.createElement("div");
+    card.style.border = "1px solid #ccc";
+    card.style.padding = "10px";
+    card.style.width = "220px";
+
+    card.innerHTML = `
+      <img src="${product.image}" style="width:100%; height:150px; object-fit:cover">
+      <h3>${product.name}</h3>
+      <p>Price: ₹${product.price}</p>
+      <p>Discount: ${product.discount}%</p>
+      <p>Bought by ${product.customers} customers</p>
+      <p>${product.description}</p>
+      <a href="${product.buyLink}" target="_blank">Buy Link</a>
+    `;
+
+    productList.appendChild(card);
+  });
+</script>
+
 </body>
 </html>
