@@ -46,9 +46,53 @@
       <td><input type="number"></td>
     </tr>
   </table>
-<button>Update Display Box</button>
-</div>
-<button id="saveBtn" disabled>save vendor details</button>
+<button id="saveBtn" disabled>Save Vendor Details</button>
+<input type="text" id="vendorName">
+<input type="text" id="shopName">
+<input type="text" id="location">
+<input type="text" id="shopNo">
+<input type="number" id="creditPeriod">
+<textarea id="products"></textarea>
+
+<select id="performance">
+  <option value="">Select</option>
+  <option>Excellent</option>
+  <option>Good</option>
+  <option>Average</option>
+</select>
+
+  <script>
+  const saveBtn = document.getElementById("saveBtn");
+
+  const inputs = document.querySelectorAll(
+    "#vendorName, #shopName, #location, #shopNo, #creditPeriod, #products, #performance"
+  );
+
+  inputs.forEach(input => {
+    input.addEventListener("input", () => {
+      saveBtn.disabled = false;
+      saveBtn.style.backgroundColor = "green";
+      saveBtn.style.cursor = "pointer";
+    });
+  });
+
+  saveBtn.addEventListener("click", () => {
+    const vendorData = {
+      vendorName: vendorName.value,
+      shopName: shopName.value,
+      location: location.value,
+      shopNo: shopNo.value,
+      creditPeriod: creditPeriod.value,
+      products: products.value,
+      performance: performance.value
+    };
+
+    localStorage.setItem("vendorData", JSON.stringify(vendorData));
+    alert("Vendor details saved successfully!");
+    window.location.href = "vendor-profile.html";
+  });
+</script>
+
 </body>
 </html>
 
