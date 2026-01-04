@@ -42,6 +42,10 @@
   <h2>Saved Products</h2>
 <div id="productList" style="display:flex; gap:20px; flex-wrap:wrap;"></div>
 
+  <button onclick="location.href='saved-products.html'">
+  Saved Products
+</button>
+
   <script>
   const products = JSON.parse(localStorage.getItem("products")) || [];
   const productList = document.getElementById("productList");
