@@ -47,10 +47,12 @@
     </tr>
   </table>
 
-  <a href="savevendordetailsBtn">Save Vendor Details</button>
+ <button id="saveBtn">Save Vendor Details</button>
+
 </div>
+  
 <script>
-  document.getElementById("savevendordetailsBtn").addEventListener("click", function () {
+  document.getElementById("saveBtn").addEventListener("click", function () {
 
     const vendorData = {
       vendorName: document.getElementById("vendorName").value,
@@ -59,7 +61,8 @@
       shopNo: document.getElementById("shopNo").value,
       creditPeriod: document.getElementById("creditPeriod").value,
       products: document.getElementById("products").value,
-      performance: document.getElementById("performance").value
+      performance: document.getElementById("performance").value,
+      saved: true   // 🔑 IMPORTANT FLAG
     };
 
     localStorage.setItem("vendorData", JSON.stringify(vendorData));
