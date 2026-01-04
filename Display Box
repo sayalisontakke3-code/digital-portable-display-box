@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Display Box</title>
+  <style>
+    body{font-family:Arial;background:#f9f9f9;padding:20px}
+    .box{background:#fff;padding:20px;border-radius:8px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+    label{font-weight:bold}
+    input,textarea{width:100%;padding:8px;margin-top:5px}
+    table{width:100%;border-collapse:collapse;margin-top:15px}
+    th,td{border:1px solid #ccc;padding:8px;text-align:center}
+    button{margin-top:20px;padding:10px;background:#000;color:#fff;border:none}
+  </style>
+</head>
+<body>
+<h2>Product Display Box</h2>
+<div class="box">
+  <div class="grid">
+    <div><label>Product Name</label><input type="text"></div>
+    <div><label>Product Price (₹)</label><input type="number"></div>
+    <div><label>Discount (%)</label><input type="number"></div>
+    <div><label>Upload Product Image</label><input type="file"></div>
+  </div>
+
+  <label>Product Description</label>
+  <textarea rows="4"></textarea>
+
+  <label>Payment Scanner (QR)</label>
+  <input type="file">
+
+  <label>Customer Reviews</label>
+  <textarea rows="3"></textarea>
+
+  <h3>Customers Bought Per Day</h3>
+  <table>
+    <tr><th>Date</th><th>Customer Name</th><th>Quantity</th></tr>
+    <tr>
+      <td><input type="date"></td>
+      <td><input type="text"></td>
+      <td><input type="number"></td>
+    </tr>
+  </table>
+
+  <button>Update Display</button>
+</div>
+</body>
+</html>
