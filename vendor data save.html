@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vendor Profile</title>
+</head>
+<body>
+
+<h2>Vendor Profile</h2>
+<div id="profile"></div>
+
+<script>
+  const data = JSON.parse(localStorage.getItem("vendorData"));
+
+  if (data) {
+    document.getElementById("profile").innerHTML = `
+      <p><b>Vendor:</b> ${data.vendorName}</p>
+      <p><b>Shop:</b> ${data.shopName}</p>
+      <p><b>Location:</b> ${data.location}</p>
+      <p><b>Shop No:</b> ${data.shopNo}</p>
+      <p><b>Credit Period:</b> ${data.creditPeriod} days</p>
+      <p><b>Products:</b> ${data.products}</p>
+      <p><b>Performance:</b> ${data.performance}</p>
+    `;
+  } else {
+    document.getElementById("profile").innerText = "No vendor data found.";
+  }
+</script>
+
+</body>
+</html>
