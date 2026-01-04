@@ -1,0 +1,136 @@
+vendor.html (Vendor Dashboard)
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vendor Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Vendor Product Upload</h2>
+
+<form id="productForm">
+  <input type="text" id="name" placeholder="Product Name" required><br>
+  <input type="number" id="price" placeholder="Price" required><br>
+  <input type="text" id="desc" placeholder="Description" required><br>
+  <input type="url" id="image" placeholder="Image URL" required><br>
+  <input type="url" id="link" placeholder="Purchase Link" required><br>
+  <button type="submit">Publish to Display</button>
+</form>
+
+<hr>
+
+<h3>Products Added</h3>
+<ul id="productList"></ul>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+display.html (Portable E-Ink Display Screen)
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Digital Product Display</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="display">
+
+<h2>Digital Product Catalog</h2>
+
+<div id="displayBox"></div>
+
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+style.css (E-Ink Look)
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+.display {
+  background: #eaeaea;
+}
+
+input, button {
+  padding: 8px;
+  margin: 5px;
+  width: 300px;
+}
+
+#displayBox {
+  border: 2px solid #333;
+  padding: 20px;
+  width: 500px;
+  background: white;
+}
+
+img {
+  width: 200px;
+  filter: grayscale(100%);
+}
+
+script.js (MAIN LOGIC – MOST IMPORTANT)
+let products = JSON.parse(localStorage.getItem("products")) || [];
+let index = 0;
+
+// Vendor Page Logic
+if (document.getElementById("productForm")) {
+  document.getElementById("productForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let product = {
+      name: name.value,
+      price: price.value,
+      desc: desc.value,
+      image: image.value,
+      link: link.value
+    };
+
+    products.push(product);
+    localStorage.setItem("products", JSON.stringify(products));
+    alert("Product Published to Display Box!");
+    location.reload();
+  });
+
+  let list = document.getElementById("productList");
+  products.forEach(p => {
+    let li = document.createElement("li");
+    li.innerText = p.name + " - ₹" + p.price;
+    list.appendChild(li);
+  });
+}
+
+// Display Page Logic
+function render() {
+  if (products.length === 0) return;
+
+  let p = products[index];
+  document.getElementById("displayBox").innerHTML = `
+    <img src="${p.image}">
+    <h3>${p.name}</h3>
+    <p>₹${p.price}</p>
+    <p>${p.desc}</p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${p.link}">
+    <p>Scan to Buy</p>
+  `;
+}
+
+function next() {
+  index = (index + 1) % products.length;
+  render();
+}
+
+function prev() {
+  index = (index - 1 + products.length) % products.length;
+  render();
+}
+
+render();
+
