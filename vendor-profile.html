@@ -29,20 +29,21 @@
 </div>
 
 <script>
-  const data = JSON.parse(localStorage.getItem("vendorprofile"));
+  const data = JSON.parse(localStorage.getItem("vendorData"));
 
-  if (!data) {
-    alert("no vendor profile found!");
+  // 🚫 Block direct access
+  if (!data || data.saved !== true) {
+    alert("Please save vendor details first!");
     window.location.href = "vendor.html";
+  } else {
+    document.getElementById("vendorName").innerText = data.vendorName;
+    document.getElementById("shopName").innerText = data.shopName;
+    document.getElementById("location").innerText = data.location;
+    document.getElementById("shopNo").innerText = data.shopNo;
+    document.getElementById("creditPeriod").innerText = data.creditPeriod;
+    document.getElementById("products").innerText = data.products;
+    document.getElementById("performance").innerText = data.performance;
   }
-
-  document.getElementById("vendorName").innerText = data.vendorName;
-  document.getElementById("shopName").innerText = data.shopName;
-  document.getElementById("location").innerText = data.location;
-  document.getElementById("shopNo").innerText = data.shopNo;
-  document.getElementById("creditPeriod").innerText = data.creditPeriod;
-  document.getElementById("products").innerText = data.products;
-  document.getElementById("performance").innerText = data.performance;
 </script>
 
 </body>
