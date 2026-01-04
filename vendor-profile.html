@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vendor Profile</title>
+  <style>
+    body { font-family: Arial; background:#f4f4f4; padding:20px }
+    .card { background:#fff; padding:20px; border-radius:8px; max-width:700px; margin:auto }
+    h2 { margin-bottom:15px }
+    p { margin:8px 0 }
+    strong { width:180px; display:inline-block }
+    button { margin-top:20px; padding:10px; background:black; color:white; border:none }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Vendor Profile</h2>
+  <p><strong>Vendor Name:</strong> <span id="vendorName"></span></p>
+  <p><strong>Shop Name:</strong> <span id="shopName"></span></p>
+  <p><strong>Location:</strong> <span id="location"></span></p>
+  <p><strong>Shop No:</strong> <span id="shopNo"></span></p>
+  <p><strong>Credit Period:</strong> <span id="creditPeriod"></span> days</p>
+  <p><strong>Products:</strong></p>
+  <pre id="products"></pre>
+  <p><strong>Monthly Performance:</strong> <span id="performance"></span></p>
+
+  <button onclick="window.location.href='vendor.html'">Edit Profile</button>
+</div>
+
+<script>
+  const data = JSON.parse(localStorage.getItem("vendorProfile"));
+
+  if (!data) {
+    alert("No vendor profile found!");
+    window.location.href = "vendor.html";
+  }
+
+  document.getElementById("vendorName").innerText = data.vendorName;
+  document.getElementById("shopName").innerText = data.shopName;
+  document.getElementById("location").innerText = data.location;
+  document.getElementById("shopNo").innerText = data.shopNo;
+  document.getElementById("creditPeriod").innerText = data.creditPeriod;
+  document.getElementById("products").innerText = data.products;
+  document.getElementById("performance").innerText = data.performance;
+</script>
+
+</body>
+</html>
