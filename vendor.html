@@ -53,36 +53,38 @@
 </html>
 
 <script>
-  const inputs = document.querySelectorAll("input, textarea, select");
-  const saveBtn = document.getElementById("saveBtn");
+  const inputs = document.querySelectorAll(
+    "#vendorName, #shopName, #location, #shopNo, #creditPeriod, #products, #performance"
+  );
 
-  function checkForm() {
-    let filled = true;
-    inputs.forEach(input => {
-      if (input.type !== "file" && input.value.trim() === "") {
-        filled = false;
-      }
-    });
-    saveBtn.disabled = !filled;
-  }
+  const updateBtn = document.getElementById("updateBtn");
 
+  // Enable button when user types or changes anything
   inputs.forEach(input => {
-    input.addEventListener("input", checkForm);
+    input.addEventListener("input", () => {
+      updateBtn.disabled = false;
+      updateBtn.style.background = "green";
+    });
   });
 
-  saveBtn.addEventListener("click", () => {
+  // Save vendor data
+  updateBtn.addEventListener("click", () => {
     const vendorData = {
-      vendorName: document.querySelector('[placeholder="Vendor Name"]')?.value || "",
-      shopName: document.querySelector('[placeholder="Shop Name"]')?.value || "",
-      location: document.querySelector('[placeholder="Destination / Location"]')?.value || "",
-      shopNo: document.querySelector('[placeholder="Shop No (Mall)"]')?.value || "",
-      creditPeriod: document.querySelector('[type="number"]')?.value || "",
-      products: document.querySelector("textarea")?.value || "",
-      performance: document.querySelector("select")?.value || ""
+      vendorName: vendorName.value,
+      shopName: shopName.value,
+      location: location.value,
+      shopNo: shopNo.value,
+      creditPeriod: creditPeriod.value,
+      products: products.value,
+      performance: performance.value
     };
 
-    localStorage.setItem("vendorProfile", JSON.stringify(vendorData));
-    alert("Vendor profile saved successfully!");
+    localStorage.setItem("vendorData", JSON.stringify(vendorData));
+
+    alert("Vendor details updated successfully!");
+
+    // Redirect to vendor profile page
     window.location.href = "vendor-profile.html";
   });
 </script>
+
