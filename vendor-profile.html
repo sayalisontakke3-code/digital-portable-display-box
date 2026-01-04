@@ -1,50 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>vendor profile</title>
-  <style>
-    body { font-family: Arial; background:#f4f4f4; padding:20px }
-    .card { background:#fff; padding:20px; border-radius:8px; max-width:700px; margin:auto }
-    h2 { margin-bottom:15px }
-    p { margin:8px 0 }
-    strong { width:180px; display:inline-block }
-    button { margin-top:20px; padding:10px; background:black; color:white; border:none }
-  </style>
-</head>
-<body>
+<h1>Vendor Profile</h1>
+<table border="1" cellpadding="8">
+  <tr><th>Vendor Name</th><td id="vendorName"></td></tr>
+  <tr><th>Shop Name</th><td id="shopName"></td></tr>
+  <tr><th>Location</th><td id="location"></td></tr>
+  <tr><th>Shop No.</th><td id="shopNo"></td></tr>
+  <tr><th>Credit Period</th><td id="creditPeriod"></td></tr>
+  <tr><th>Products Uploaded</th><td id="productCount"></td></tr>
+  <tr><th>Monthly Performance</th><td id="performance"></td></tr>
+</table>
 
-<div class="card">
-  <h2>vendor profile</h2>
-  <p><strong>vendor name:</strong> <span id="vendorName"></span></p>
-  <p><strong>shop name:</strong> <span id="shopName"></span></p>
-  <p><strong>location:</strong> <span id="location"></span></p>
-  <p><strong>shop No:</strong> <span id="shopNo"></span></p>
-  <p><strong>credit Period:</strong> <span id="creditPeriod"></span> days</p>
-  <p><strong>products:</strong></p>
-  <pre id="products"></pre>
-  <p><strong>monthly performance:</strong> <span id="performance"></span></p>
+<h2>Daily Charges</h2>
+<table border="1" cellpadding="8">
+  <tr>
+    <th>Date</th>
+    <th>Charge (₹)</th>
+  </tr>
+  <tr>
+    <td>01 Jan</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>02 Jan</td>
+    <td>50</td>
+  </tr>
+</table>
 
-  <button onclick="window.location.href='vendor.html'">edit profile</button>
-</div>
+<h3>Shop Image</h3>
+<input type="file">
 
-<script>
-  const data = JSON.parse(localStorage.getItem("vendorData"));
-
-  // 🚫 Block direct access
-  if (!data || data.saved !== true) {
-    alert("Please save vendor details first!");
-    window.location.href = "vendor.html";
-  } else {
-    document.getElementById("vendorName").innerText = data.vendorName;
-    document.getElementById("shopName").innerText = data.shopName;
-    document.getElementById("location").innerText = data.location;
-    document.getElementById("shopNo").innerText = data.shopNo;
-    document.getElementById("creditPeriod").innerText = data.creditPeriod;
-    document.getElementById("products").innerText = data.products;
-    document.getElementById("performance").innerText = data.performance;
-  }
-</script>
-
-</body>
-</html>
