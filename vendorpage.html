@@ -1,0 +1,34 @@
+<script>
+  const inputs = document.querySelectorAll("input, textarea, select");
+  const saveBtn = document.getElementById("saveBtn");
+
+  function checkForm() {
+    let filled = true;
+    inputs.forEach(input => {
+      if (input.type !== "file" && input.value.trim() === "") {
+        filled = false;
+      }
+    });
+    saveBtn.disabled = !filled;
+  }
+
+  inputs.forEach(input => {
+    input.addEventListener("input", checkForm);
+  });
+
+  saveBtn.addEventListener("click", () => {
+    const vendorData = {
+      vendorName: document.querySelector('[placeholder="Vendor Name"]')?.value || "",
+      shopName: document.querySelector('[placeholder="Shop Name"]')?.value || "",
+      location: document.querySelector('[placeholder="Destination / Location"]')?.value || "",
+      shopNo: document.querySelector('[placeholder="Shop No (Mall)"]')?.value || "",
+      creditPeriod: document.querySelector('[type="number"]')?.value || "",
+      products: document.querySelector("textarea")?.value || "",
+      performance: document.querySelector("select")?.value || ""
+    };
+
+    localStorage.setItem("vendorProfile", JSON.stringify(vendorData));
+    alert("Vendor profile saved successfully!");
+    window.location.href = "vendor-profile.html";
+  });
+</script>
